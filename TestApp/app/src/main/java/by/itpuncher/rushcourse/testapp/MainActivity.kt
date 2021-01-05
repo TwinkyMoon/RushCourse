@@ -3,6 +3,7 @@ package by.itpuncher.rushcourse.testapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
@@ -18,5 +19,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,  CreateNoteActivity::class.java)
             startActivity(intent)
         }
+
+        val data = StorageUtil.loadFromFile(this)
+        data.forEach { Log.d("Data", "${it.first}: ${it.second}") }
     }
 }

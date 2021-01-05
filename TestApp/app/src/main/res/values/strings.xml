@@ -2,4 +2,5 @@
     <string name="app_name">Test App</string>
     <string name="activity_create_note_title">Put some notes</string>
     <string name="save">Save</string>
+    <string name="no_data">Нет данных для сохранения</string>
 </resources>
