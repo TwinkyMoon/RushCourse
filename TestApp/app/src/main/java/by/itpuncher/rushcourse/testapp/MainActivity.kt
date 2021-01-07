@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +19,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+        val lm = LinearLayoutManager(this)
+        recyclerView.layoutManager = lm
+        val adapter = RecordsAdapter()
+        recyclerView.adapter = adapter
+
         val data = StorageUtil.loadFromFile(this)
-        data.forEach { Log.d("Data", "${it.first}: ${it.second}") }
+        val records: ArrayList<Record> = arrayListOf()
+        data.forEach { records.add(Record(it.first.toString(), it.second)) }
+
+        adapter.setData(records)
     }
 }
