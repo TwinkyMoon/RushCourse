@@ -31,6 +31,11 @@ class RecordsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun addData(record: Record) {
+        items.add(record)
+        notifyItemInserted(itemCount)
+    }
+
     class RecordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle = itemView.findViewById<TextView>(R.id.tv_title)
         private val tvText = itemView.findViewById<TextView>(R.id.tv_text)

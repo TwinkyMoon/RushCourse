@@ -5,9 +5,9 @@ import android.widget.Toast
 
 object StorageUtil {
 
-    fun saveToFile(context: Context, text: String) {
+    fun saveToFile(context: Context, createTime: Long, text: String) {
         if (text.isNotEmpty()) {
-            val fileName = System.currentTimeMillis().toString()
+            val fileName = createTime.toString()
             context.openFileOutput(fileName, Context.MODE_PRIVATE)
                     .use {
                         it.write(text.toByteArray())
