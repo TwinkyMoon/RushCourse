@@ -1,5 +1,6 @@
 package by.itpuncher.rushcourse.testapp
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,11 @@ class RecordsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(record: Record) {
             tvTitle.text = record.title
             tvText.text = record.text
+            itemView.setOnClickListener {
+                val intent = Intent(it.context, CreateNoteActivity::class.java)
+                intent.putExtra(RECORD, record)
+                it.context.startActivity(intent)
+            }
         }
     }
 }
